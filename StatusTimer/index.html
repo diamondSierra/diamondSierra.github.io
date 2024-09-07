@@ -7,8 +7,8 @@
     <title>Status Timer</title>
     <link href="https://deltarune.com/assets/css/main.css?1668902517" rel="stylesheet" type="text/css">
     <style>
-        @font-face { font-family: "8-Bit"; src: url('8Bit.ttf'); }
-        @font-face { font-family: "8-Bit Bold"; src: url('8Bit_Bold.ttf'); }
+        @font-face { font-family: "8-Bit"; src: url('./assets/fonts/8Bit.ttf'); }
+        @font-face { font-family: "8-Bit Bold"; src: url('./assets/fonts/8Bit_Bold.ttf'); }
         body {
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -21,12 +21,12 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            cursor: url('curs.png') 0 1, pointer;
+            cursor: url('./assets/curs.png') 0 1, pointer;
         }
         img {
             image-rendering: pixelated;
             image-rendering: crisp-edges;
-            cursor: url('curs_w.png') 0 1, auto;
+            cursor: url('./assets/curs_w.png') 0 1, auto;
         }
         .container {
             text-align: center;
@@ -58,10 +58,10 @@
             -ms-user-drag: none;
             user-select: none;
             pointer-events: none;
-        	display: block;
-        	width: 120px;
-        	height: 50px;
-        	margin: auto;
+            display: block;
+            width: 120px;
+            height: 50px;
+            margin: auto;
             margin-bottom: -20px;
         }
         .figstyle, figcaption {
@@ -72,12 +72,12 @@
 <body>
     <div class="container">
         <div class="title">
-            <img class="tobysleeping" src="dog-sleep.gif">
+            <img class="tobysleeping" src="./assets/images/dog-sleep.gif">
             <span id="newsletterTitle"></span>
         </div>
         <div class="title" id="rt">
-        	Remaining Time:
-    	</div>
+            Remaining Time:
+        </div>
         <div class="timer" id="countdown">
             <div class="time-section">
                 <span id="days">--</span>
@@ -99,11 +99,11 @@
         <figure class="music-embed mb mt-big">
             <figcaption class="figtitle">♪ DELTARUNE OST</figcaption>
             <div aria-hidden="" class="dog-player">
-                <img class="dog" id="play" src="assets/images/dog-piano.png">
-                <img class="dog-playing" style="display:none" id="play" src="assets/images/dog-piano-playing.gif">
+                <img class="dog" id="play" src="./assets/images/dog-piano.png">
+                <img class="dog-playing" style="display:none" id="play" src="./assets/images/dog-piano-playing.gif">
                 <audio class="music" controls="" volume="0.7" id="musicPlayer">
-                    <source id="audioSource" src="/assets/audio/" type="audio/mp3">
-                    <p>Your browser does not support music playback. Please <a href="/assets/audio/">download the file</a> to listen.</p>
+                    <source id="audioSource" src="https://deltarune.com/assets/audio/" type="audio/mp3">
+                    <p>Your browser does not support music playback. Please <a href="https://deltarune.com/assets/audio/">download the file</a> to listen.</p>
                 </audio>
             </div>
             <figcaption>"Click me to play a random DELTARUNE song!"</figcaption>
@@ -146,51 +146,51 @@
 
     </script>
     <script>
-        const currentNewsletter = "Autumn 24"
-        const spamton = "[[CLICK HERE]] for [[" + currentNewsletter + " Newsletter]]"
-	    const url = "https://toby.fangamer.com/newsletters/autumn24/";
+        const currentNewsletter = "Autumn 24";
+        const spamton = "[[CLICK HERE]] for [[" + currentNewsletter + " Newsletter]]";
+        const url = "https://toby.fangamer.com/newsletters/autumn24/";
 
-        document.querySelector('#newsletterTitle').innerText=currentNewsletter;
+        document.querySelector('#newsletterTitle').innerText = currentNewsletter;
 
-	    function goto() {
-	        window.location.href = url;
-	    }
+        function goto() {
+            window.location.href = url;
+        }
 
-	    function updateCountdown() {
-	        const targetDate = new Date("September 15, 2024 08:00:00").getTime();
-	        const now = new Date().getTime();
-	        const distance = targetDate - now;
+        function updateCountdown() {
+            const targetDate = new Date("September 15, 2024 08:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
 
-	        if (distance >= 0) {
-	            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-	            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-	            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-	            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            if (distance >= 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-	            document.getElementById("days").innerText = days;
-	            document.getElementById("hours").innerText = hours;
-	            document.getElementById("minutes").innerText = minutes;
-	            document.getElementById("seconds").innerText = seconds;
-	        } else {
-	            fetch(url)
-	                .then(response => {
-	                    if (response.status === 200) {
-	                        document.getElementById("countdown").innerHTML = 
-	                            "<span class='title' onclick='goto()' style='color: #ff0;'>" + spamton + "</span>";
-	                    } else {
-	                        document.getElementById("countdown").innerHTML = 
-	                            "<span class='title'>waiting for Toby Fox...</span>";
-	                    }
-	                })
-	                .catch(error => {
-	                    document.getElementById("countdown").innerHTML = 
-	                        "<span class='title'>waiting for Toby Fox...</span>";
-	                    console.error("Error fetching URL:", error);
-	                });
-	        }
-	    }
+                document.getElementById("days").innerText = days;
+                document.getElementById("hours").innerText = hours;
+                document.getElementById("minutes").innerText = minutes;
+                document.getElementById("seconds").innerText = seconds;
+            } else {
+                fetch(url)
+                    .then(response => {
+                        if (response.status === 200) {
+                            document.getElementById("countdown").innerHTML = 
+                                "<span class='title' onclick='goto()' style='color: #ff0;'>" + spamton + "</span>";
+                        } else {
+                            document.getElementById("countdown").innerHTML = 
+                                "<span class='title'>waiting for Toby Fox...</span>";
+                        }
+                    })
+                    .catch(error => {
+                        document.getElementById("countdown").innerHTML = 
+                            "<span class='title'>waiting for Toby Fox...</span>";
+                        console.error("Error fetching URL:", error);
+                    });
+            }
+        }
 
-	    if (currentNewsletter.length >=0) {
+        if (currentNewsletter.length >=0) {
             if (currentNewsletter.match('Winter ')) {document.querySelector('#newsletterTitle').style.color="#fffafa"};
             if (currentNewsletter.match('Autumn ')) {document.querySelector('#newsletterTitle').style.color="darkorange"};
             if (currentNewsletter.match('Spring ')) {document.querySelector('#newsletterTitle').style.color="#88A075"};
@@ -202,6 +202,6 @@
             document.querySelector('#rt').remove();
             document.querySelector('#newsletterTitle').innerText="no planned next newsletter date currently.\ncheck again later";
         }
-	</script>
+    </script>
 </body>
 </html>

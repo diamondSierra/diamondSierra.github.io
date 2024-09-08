@@ -114,7 +114,7 @@
             <figcaption>"Click me to play a random DELTARUNE song!"</figcaption>
         </figure>
         <figure class="proof">
-            <figcaption id="proofclick">Proof of date <span style="color: yellow">[[CLICK HERE]]!!</span></figcaption>
+            <figcaption id="proofclick"></figcaption>
         </figure>
     </div>
     <script>
@@ -167,12 +167,12 @@
         }
 
         if (proofurl.length > 3) {
-            document.querySelector('#proofclick')
-                .textContent = "";
-                .style.visibility="visible";
-                .onclick = function(e) {
-                    window.location.href=proofurl;
-                }
+            const proofObj=document.querySelector('#proofclick');
+            proofObj.innerHTML = '<figcaption id="proofclick">Proof of date <span style="color: yellow">[[CLICK HERE]]!!</span></figcaption>';
+            proofObj.style.visibility="visible";
+            proofObj.onclick = function(e) {
+                window.location.href=proofurl;
+            }
         }
 
         const emojiList = {

@@ -69,10 +69,24 @@
         .figstyle, figcaption {
             font-family: "8-Bit Bold";
         }
-        #proofclick {
+        .proof {
             color: white !important;
             font-family: "8-Bit Bold" !important;
             visibility: hidden;
+        }
+        #proofclick {
+            color: rgba(253,224,71) !important;
+            font-family: "8-Bit Bold" !important;
+            visibility: hidden;
+        }
+        .loopbutton {
+            width:30px;
+            height:30px;
+        }
+        .random {
+            width: 50px;
+            height: 30px;
+            margin-left: 10px!important;
         }
     </style>
 </head>
@@ -112,11 +126,13 @@
                     <source id="audioSource" src="https://deltarune.com/assets/audio/" type="audio/mp3">
                     <p>Your browser does not support music playback. Please <a href="https://deltarune.com/assets/audio/">download the file</a> to listen.</p>
                 </audio>
+                <img class="loopbutton" src="./loopoff.png">
+                <img class="random" src="./random.png">
             </div>
             <figcaption>"Click me to play a random DELTARUNE Chapter 3 / 4 song!"</figcaption>
         </figure>
         <figure class="proof">
-            <figcaption id="proofclick"></figcaption>
+            <figcaption class="proof"></figcaption>
         </figure>
     </div>
     <script>
@@ -125,14 +141,27 @@
             "update2022-castle-funk.mp3",
             "greenroom.ogg"
         ]
+        let random = document.querySelector('.random');
         let audioSource = document.getElementById('audioSource');
         let musicPlayer = document.getElementById('musicPlayer');
         audioSource.src = "https://deltarune.com/assets/audio/" + randomAudios[Math.floor(Math.random() * randomAudios.length)];
         musicPlayer.load();
+
+        random.onclick= function(e) {
+            musicPlayer.pause();
+            audioSource.currentTime = 0;
+            document.querySelector('.dog').style.display = "block";
+            document.querySelector('.dog-playing').style.display = "none";
+            audioSource.src = "https://deltarune.com/assets/audio/" + randomAudios[Math.floor(Math.random() * randomAudios.length)];
+        musicPlayer.load();
+        }
     </script>
     <script>
         const audioObj = document.querySelector('audio');
         const playButtons = document.querySelectorAll('#play');
+        const loopb = document.querySelector('.loopbutton');
+        const lbs1 = "./loopon.png";
+        const lbs2 = "./loopoff.png";
 
         playButtons.forEach(button => {
             button.onclick = function() {
@@ -154,6 +183,17 @@
             document.querySelector('.dog-playing').style.display = "none";
         };
 
+        loopb.onclick = function(e) {
+            if (audioObj.loop) {
+                audioObj.loop = false;
+                loopb.src=lbs2;
+            }
+            else {
+                audioObj.loop = true;
+                loopb.src=lbs1;
+            }
+        }
+
     </script>
     <script>
         const currentNewsletter = "Autumn 24";
@@ -169,10 +209,12 @@
         }
 
         if (proofurl.length > 3) {
-            const proofObj=document.querySelector('#proofclick');
-            proofObj.innerHTML = 'Proof of date <span style="color: rgba(253,224,71)">[[CLICK HERE]]!!</span>';
+            const proofObj=document.querySelector('.proof');
+            proofObj.innerHTML = 'Proof of date <span id="proofclick">[[CLICK HERE]]!!</span>';
+            const proofCB = document.querySelector('#proofclick');
             proofObj.style.visibility="visible";
-            proofObj.onclick = function(e) {
+            proofCB.style.visibility="visible";
+            proofCB.onclick = function(e) {
                 window.location.href=proofurl;
             }
         }

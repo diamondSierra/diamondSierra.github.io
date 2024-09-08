@@ -69,6 +69,9 @@
         .figstyle, figcaption {
             font-family: "8-Bit Bold";
         }
+        #proofclick {
+            visibility: hidden;
+        }
     </style>
 </head>
 <body>
@@ -109,6 +112,9 @@
                 </audio>
             </div>
             <figcaption>"Click me to play a random DELTARUNE song!"</figcaption>
+        </figure>
+        <figure class="proof">
+            <figcaption id="proofclick">Proof of date <span style="color: yellow">[[CLICK HERE]]!!</span></figcaption>
         </figure>
     </div>
     <script>
@@ -151,12 +157,22 @@
         const currentNewsletter = "Autumn 24";
         const spamton = "[[CLICK HERE]] for [[" + currentNewsletter + " Newsletter]]!!";
         const url = "https://toby.fangamer.com/newsletters/autumn24/";
+        const proofurl = "https://x.com/tobyfox/status/1831483965263487016" /* optional; can be blank*/
         const titleString = "UNDERTALE / DELTARUNE NEWSLETTER: " + currentNewsletter + " - Toby Fox"
         document.querySelector('title').innerText = "📆" + titleString ;
         document.querySelector('#newsletterTitle').innerText = currentNewsletter;
 
         function goto() {
             window.location.href = url;
+        }
+
+        if (proofurl.length > 3) {
+            document.querySelector('#proofclick')
+                .textContent = "";
+                .style.visibility="visible";
+                .onclick = function(e) {
+                    window.location.href=proofurl;
+                }
         }
 
         const emojiList = {

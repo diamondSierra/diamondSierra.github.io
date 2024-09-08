@@ -149,9 +149,9 @@
     </script>
     <script>
         const currentNewsletter = "Autumn 24";
-        const spamton = "[[CLICK HERE]] for [[" + currentNewsletter + " Newsletter]]";
+        const spamton = "[[CLICK HERE]] for [[" + currentNewsletter + " Newsletter]]!!";
         const url = "https://toby.fangamer.com/newsletters/autumn24/";
-
+        document.querySelector('title').innerText = "📆UNDERTALE / DELTARUNE NEWSLETTER: " + currentNewsletter + " - Toby Fox" ;
         document.querySelector('#newsletterTitle').innerText = currentNewsletter;
 
         function goto() {
@@ -187,7 +187,7 @@
                     .catch(error => {
                         document.getElementById("countdown").innerHTML = 
                             "<span class='title'>waiting for Toby Fox...</span>";
-                        console.error("Error fetching URL:", error);
+                        console.error("error fetching URL:", error);
                     });
             }
         }
@@ -202,7 +202,7 @@
         } else {
             document.querySelector('#countdown').remove();
             document.querySelector('#rt').remove();
-            document.querySelector('#newsletterTitle').innerText="no planned next newsletter date currently.\ncheck again later";
+            document.querySelector('#newsletterTitle').innerText="no next newsletter date currently available.\ncheck again later";
         }
     </script>
 </body>

@@ -170,7 +170,7 @@
 
         if (proofurl.length > 3) {
             const proofObj=document.querySelector('#proofclick');
-            proofObj.innerHTML = 'Proof of date <span style="color: rgba(253,224,71,var(--tw-text-opacity))">[[CLICK HERE]]!!</span>';
+            proofObj.innerHTML = 'Proof of date <span style="color: rgba(253,224,71)">[[CLICK HERE]]!!</span>';
             proofObj.style.visibility="visible";
             proofObj.onclick = function(e) {
                 window.location.href=proofurl;
@@ -216,7 +216,7 @@
                     .then(response => {
                         if (response.status === 200) {
                             document.getElementById("countdown").innerHTML = 
-                                "<span class='title' onclick='goto()' style='color: rgba(253,224,71,var(--tw-text-opacity));'>" + spamton + "</span>";
+                                "<span class='title' onclick='goto()' style='color: rgba(253,224,71);'>" + spamton + "</span>";
                             document.querySelector('title').innerText = "‼️" + titleString;
                                 clearInterval(sIv);
                         } else {

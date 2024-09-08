@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://toby.fangamer.com/favicon.ico" rel="icon" type="image/png">
-    <title>Status Timer</title>
+    <title>UNDERTALE / DELTARUNE NEWSLETTER - Toby Fox</title>
     <link href="https://deltarune.com/assets/css/main.css?1668902517" rel="stylesheet" type="text/css">
     <style>
         @font-face { font-family: "8-Bit"; src: url('https://deltarune.com/assets/fonts/8bitOperatorPlus-Regular.ttf'); }
@@ -113,7 +113,7 @@
                     <p>Your browser does not support music playback. Please <a href="https://deltarune.com/assets/audio/">download the file</a> to listen.</p>
                 </audio>
             </div>
-            <figcaption>"Click me to play a random DELTARUNE song!"</figcaption>
+            <figcaption>"Click me to play a random DELTARUNE Chapter 3 / 4 song!"</figcaption>
         </figure>
         <figure class="proof">
             <figcaption id="proofclick"></figcaption>
@@ -170,7 +170,7 @@
 
         if (proofurl.length > 3) {
             const proofObj=document.querySelector('#proofclick');
-            proofObj.innerHTML = 'Proof of date <span style="color: yellow">[[CLICK HERE]]!!</span>';
+            proofObj.innerHTML = 'Proof of date <span style="color: rgba(253,224,71,var(--tw-text-opacity))">[[CLICK HERE]]!!</span>';
             proofObj.style.visibility="visible";
             proofObj.onclick = function(e) {
                 window.location.href=proofurl;
@@ -178,7 +178,7 @@
         }
 
         const emojiList = {
-            0: "0️⃣",
+            0: "⌛",
             1: "1️⃣",
             2: "2️⃣",
             3: "3️⃣",
@@ -203,7 +203,9 @@
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                 if (days <= 5) {
-                    document.querySelector('title').innerText = emojiList[days] + titleString;
+                    if (!document.querySelector('title').innerText.match("‼️")) {
+                        document.querySelector('title').innerText = emojiList[days] + titleString;
+                    }
                 }
                 document.getElementById("days").innerText = days;
                 document.getElementById("hours").innerText = hours;
@@ -214,7 +216,8 @@
                     .then(response => {
                         if (response.status === 200) {
                             document.getElementById("countdown").innerHTML = 
-                                "<span class='title' onclick='goto()' style='color: #ff0;'>" + spamton + "</span>";
+                                "<span class='title' onclick='goto()' style='color: rgba(253,224,71,var(--tw-text-opacity));'>" + spamton + "</span>";
+                            document.querySelector('title').innerText = "‼️" + titleString;
                                 clearInterval(sIv);
                         } else {
                             document.getElementById("countdown").innerHTML = 

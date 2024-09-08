@@ -151,13 +151,28 @@
         const currentNewsletter = "Autumn 24";
         const spamton = "[[CLICK HERE]] for [[" + currentNewsletter + " Newsletter]]!!";
         const url = "https://toby.fangamer.com/newsletters/autumn24/";
-        document.querySelector('title').innerText = "📆UNDERTALE / DELTARUNE NEWSLETTER: " + currentNewsletter + " - Toby Fox" ;
+        const titleString = "UNDERTALE / DELTARUNE NEWSLETTER: " + currentNewsletter + " - Toby Fox"
+        document.querySelector('title').innerText = "📆" + titleString ;
         document.querySelector('#newsletterTitle').innerText = currentNewsletter;
 
         function goto() {
             window.location.href = url;
         }
 
+        const emojiList = {
+            [0] = "0️⃣",
+            [1] = "1️⃣",
+            [2] = "2️⃣",
+            [3] = "3️⃣",
+            [4] = "4️⃣",
+            [5] = "5️⃣",
+            [6] = "6️⃣",
+            [7] = "7️⃣",
+            [8] = "8️⃣",
+            [9] = "9️⃣",
+            [10] = "🔟",
+        };
+        
         function updateCountdown() {
             const targetDate = new Date("September 15, 2024 08:00:00").getTime();
             const now = new Date().getTime();
@@ -169,6 +184,9 @@
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+                if (days <= 5) {
+                    document.querySelector('title').innerText = emojiList[days] + titleString;
+                }
                 document.getElementById("days").innerText = days;
                 document.getElementById("hours").innerText = hours;
                 document.getElementById("minutes").innerText = minutes;
@@ -179,6 +197,7 @@
                         if (response.status === 200) {
                             document.getElementById("countdown").innerHTML = 
                                 "<span class='title' onclick='goto()' style='color: #ff0;'>" + spamton + "</span>";
+                                clearInterval(sIv);
                         } else {
                             document.getElementById("countdown").innerHTML = 
                                 "<span class='title'>waiting for Toby Fox...</span>";
@@ -198,11 +217,12 @@
             if (currentNewsletter.match('Spring ')) {document.querySelector('#newsletterTitle').style.color="#88A075"};
             if (currentNewsletter.match('Summer ')) {document.querySelector('#newsletterTitle').style.color="#15B2D3"};
             updateCountdown();
-            setInterval(updateCountdown, 1000);
+            let sIv = setInterval(updateCountdown, 1000);
         } else {
             document.querySelector('#countdown').remove();
             document.querySelector('#rt').remove();
             document.querySelector('#newsletterTitle').innerText="no next newsletter date currently available.\ncheck again later";
+            clearInterval(sIv);
         }
     </script>
 </body>

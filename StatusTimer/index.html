@@ -280,7 +280,7 @@
             if (currentNewsletter.match('Spring ')) {document.querySelector('#newsletterTitle').style.color="#88A075"};
             if (currentNewsletter.match('Summer ')) {document.querySelector('#newsletterTitle').style.color="#15B2D3"};
             updateCountdown();
-            let sIv = setInterval(updateCountdown, 5000);
+            let sIv = setInterval(updateCountdown, 1000);
         } else {
             document.querySelector('#countdown').remove();
             document.querySelector('#rt').remove();

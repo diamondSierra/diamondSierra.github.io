@@ -75,7 +75,7 @@
             visibility: hidden;
         }
         #proofclick {
-            color: rgba(253,224,71) !important;
+            color: #ffaec9 !important;
             font-family: "8-Bit Bold" !important;
             visibility: hidden;
         }
@@ -90,6 +90,7 @@
         }
         .info {
             cursor: help !important;
+            color: #75fbed;
         }
     </style>
 </head>
@@ -121,7 +122,7 @@
             </div>
         </div>
         <figure class="music-embed mb mt-big">
-            <figcaption class="figtitle">♪ DELTARUNE OST</figcaption>
+            <figcaption class="figtitle" id="nowpl">♪ None</figcaption>
             <div aria-hidden="" class="dog-player">
                 <img class="dog" id="play" src="https://deltarune.com/assets/images/dog-piano.png">
                 <img class="dog-playing" style="display:none" id="play" src="https://deltarune.com/assets/images/dog-piano-playing.gif">
@@ -132,7 +133,7 @@
                 <img class="loopbutton" src="./loopoff.png">
                 <img class="random" src="./random.png">
             </div>
-            <figcaption>"Click me to play a random <span class="info" title="Any song listed here is being played from the official DELTARUNE.com website.\nTo avoid copyright issues, I will only provide free, publicly accessible sound files.">DELTARUNE.com</span> song!"</figcaption>
+            <figcaption>"Click me to play a random <span class="info" title="Any song listed here is being played from the official DELTARUNE.com website.&#10;To avoid copyright issues, I will only provide free, publicly accessible sound files.">DELTARUNE.com</span> song!"</figcaption>
         </figure>
         <figure class="proof">
             <figcaption class="proof"></figcaption>
@@ -160,6 +161,7 @@
             audioSource.currentTime = 0;
             document.querySelector('.dog').style.display = "block";
             document.querySelector('.dog-playing').style.display = "none";
+            document.querySelector('#nowpl').textContent="♪ None";
             audioSource.src = "https://deltarune.com/assets/audio/" + randomAudios[Math.floor(Math.random() * randomAudios.length)];
         musicPlayer.load();
         }
@@ -168,6 +170,7 @@
         const audioObj = document.querySelector('audio');
         const playButtons = document.querySelectorAll('#play');
         const loopb = document.querySelector('.loopbutton');
+        const nowpl = document.querySelector('#nowpl');
         const lbs1 = "./loopon.png";
         const lbs2 = "./loopoff.png";
 
@@ -182,11 +185,13 @@
         });
 
         audioObj.onplay = function () {
+            nowpl.textContent="♪ "+audioObj.src.replace("https://deltarune.com/assets/audio/", "");
             document.querySelector('.dog').style.display = "none";
             document.querySelector('.dog-playing').style.display = "block";
         };
 
         audioObj.onpause = function () {
+            nowpl.textContent="♪ "+audioObj.src.replace("https://deltarune.com/assets/audio/", "")+" - Paused"
             document.querySelector('.dog').style.display = "block";
             document.querySelector('.dog-playing').style.display = "none";
         };

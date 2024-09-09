@@ -199,7 +199,7 @@
         const currentNewsletter = "Autumn 24";
         const spamton = "[[CLICK HERE]] for [[" + currentNewsletter + " Newsletter]]!!";
         const url = "https://toby.fangamer.com/newsletters/autumn24/";
-        const proofurl = "https://x.com/tobyfox/status/1831483965263487016" /* optional; can be blank*/
+        const proofurl = "https://x.com/tobyfox/status/1831483965263487016"
         const titleString = "UNDERTALE / DELTARUNE NEWSLETTER: " + currentNewsletter + " - Toby Fox"
         document.querySelector('title').innerText = "📆" + titleString ;
         document.querySelector('#newsletterTitle').innerText = currentNewsletter;
@@ -233,8 +233,30 @@
             10: "🔟",
         };
         
+        let sIv;
+
+        function fetcher() {
+            fetch(url)
+                .then(response => {
+                    if (response.status === 200) {
+                        document.getElementById("countdown").innerHTML = 
+                            "<span class='title' onclick='goto()' style='color: rgba(253,224,71);'>" + spamton + "</span>";
+                        document.querySelector('title').innerText = "‼️" + titleString;
+                        clearInterval(sIv);
+                    } else {
+                        document.getElementById("countdown").innerHTML = 
+                            "<span class='title'>waiting for Toby Fox...</span>";
+                    }
+                })
+                .catch(error => {
+                    document.getElementById("countdown").innerHTML = 
+                        "<span class='title'>waiting for Toby Fox...</span>";
+                    console.error("error fetching URL:", error);
+                });
+        }
+
         function updateCountdown() {
-            const targetDate = new Date("September 15, 2024 08:00:00").getTime();
+            const targetDate = new Date("September 15, 2024 07:00:00").getTime();
             const now = new Date().getTime();
             const distance = targetDate - now;
 
@@ -254,38 +276,23 @@
                 document.getElementById("minutes").innerText = minutes;
                 document.getElementById("seconds").innerText = seconds;
             } else {
-                fetch(url)
-                    .then(response => {
-                        if (response.status === 200) {
-                            document.getElementById("countdown").innerHTML = 
-                                "<span class='title' onclick='goto()' style='color: rgba(253,224,71);'>" + spamton + "</span>";
-                            document.querySelector('title').innerText = "‼️" + titleString;
-                                clearInterval(sIv);
-                        } else {
-                            document.getElementById("countdown").innerHTML = 
-                                "<span class='title'>waiting for Toby Fox...</span>";
-                        }
-                    })
-                    .catch(error => {
-                        document.getElementById("countdown").innerHTML = 
-                            "<span class='title'>waiting for Toby Fox...</span>";
-                        console.error("error fetching URL:", error);
-                    });
+                fetcher();
             }
         }
 
-        if (currentNewsletter.length >=0) {
+        if (currentNewsletter.length >= 0) {
             if (currentNewsletter.match('Winter ')) {document.querySelector('#newsletterTitle').style.color="#fffafa"};
             if (currentNewsletter.match('Autumn ')) {document.querySelector('#newsletterTitle').style.color="darkorange"};
             if (currentNewsletter.match('Spring ')) {document.querySelector('#newsletterTitle').style.color="#88A075"};
             if (currentNewsletter.match('Summer ')) {document.querySelector('#newsletterTitle').style.color="#15B2D3"};
+            
             updateCountdown();
-            let sIv = setInterval(updateCountdown, 1000);
+            sIv = setInterval(updateCountdown, 1000);
         } else {
             document.querySelector('#countdown').remove();
             document.querySelector('#rt').remove();
             document.querySelector('#newsletterTitle').innerText="no next newsletter date currently available.\ncheck again later";
-            clearInterval(sIv);
+            updateCountdown = function(){/**/};
         }
     </script>
 </body>

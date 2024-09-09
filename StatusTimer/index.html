@@ -23,7 +23,7 @@
             margin: 0;
             cursor: url('./curs.png') 0 1, pointer;
         }
-        *:not(body) {
+        *:not(body, .info) {
             cursor: url('./curs_w.png') 0 1, auto !important;
         }
         img {
@@ -88,6 +88,9 @@
             height: 30px;
             margin-left: 10px!important;
         }
+        .info {
+            cursor: help !important;
+        }
     </style>
 </head>
 <body>
@@ -129,7 +132,7 @@
                 <img class="loopbutton" src="./loopoff.png">
                 <img class="random" src="./random.png">
             </div>
-            <figcaption>"Click me to play a random DELTARUNE song!"</figcaption>
+            <figcaption>"Click me to play a random <span class="info" title="Any song listed here is being played from the official DELTARUNE.com website.\nTo avoid copyright issues, I will only provide free, publicly accessible sound files.">DELTARUNE.com</span> song!"</figcaption>
         </figure>
         <figure class="proof">
             <figcaption class="proof"></figcaption>

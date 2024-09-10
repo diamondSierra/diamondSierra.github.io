@@ -88,9 +88,17 @@
             height: 30px;
             margin-left: 10px!important;
         }
+        .shuffle {
+            width: 60px;
+            height: 30px;
+            margin-left: 10px!important;
+        }
         .info {
             cursor: help !important;
             color: #75fbed;
+        }
+        .small {
+            font-size: 12px !important;
         }
     </style>
 </head>
@@ -132,7 +140,9 @@
                 </audio>
                 <img class="loopbutton" src="./loopoff.png">
                 <img class="random" src="./random.png">
+                <img class="shuffle" src="./shuffleoff.png">
             </div>
+            <span class="small">Note that in order to play next track in shuffle mode, you <span class="red">MUST</span> have loop turned off.&#10;Otherwise, it will loop the track non-stop.</span>
             <figcaption>"Click me to play a random <span class="info" title="To avoid copyright issues, I will only provide free, publicly accessible sound files.&#10;Any song listed here is being played from the official DELTARUNE.com website.">DELTARUNE.com</span> song!"</figcaption>
         </figure>
         <figure class="proof">
@@ -149,23 +159,48 @@
             "midi-pandora-palace_byShinkoNetCavy.mp3",
             "midi-spamton-battle.mp3",
             "midi-bigshot_byShinkoNetCavy.mp3"
-        ]
+        ];
+
         let random = document.querySelector('.random');
+        let shuffle = document.querySelector('.shuffle');
         let audioSrc = document.getElementById('audioSource');
         let musicPlayer = document.getElementById('musicPlayer');
-        audioSource.src = "https://deltarune.com/assets/audio/" + randomAudios[Math.floor(Math.random() * randomAudios.length)];
-        musicPlayer.load();
 
-        random.onclick= function(e) {
+        function loadRandomAudio() {
+            audioSrc.src = "https://deltarune.com/assets/audio/" + randomAudios[Math.floor(Math.random() * randomAudios.length)];
+            musicPlayer.load();
+        }
+
+        loadRandomAudio();
+
+        let isShuffle = false;
+
+        random.onclick = function (e) {
+            if (isShuffle) {
+                isShuffle = false;
+                shuffle.src = "./shuffleoff.png";
+            }
             musicPlayer.pause();
-            audioSource.currentTime = 0;
+            musicPlayer.currentTime = 0;
             document.querySelector('.dog').style.display = "block";
             document.querySelector('.dog-playing').style.display = "none";
-            document.querySelector('#nowpl').textContent="♪ None";
-            audioSource.src = "https://deltarune.com/assets/audio/" + randomAudios[Math.floor(Math.random() * randomAudios.length)];
-        musicPlayer.load();
-        }
+            document.querySelector('#nowpl').textContent = "♪ None";
+            loadRandomAudio();
+        };
+
+        shuffle.onclick = function (e) {
+            isShuffle = !isShuffle;
+            shuffle.src = isShuffle ? "./shuffleon.png" : "./shuffleoff.png";
+        };
+
+        musicPlayer.onended = function () {
+            if (isShuffle) {
+                loadRandomAudio();
+                musicPlayer.play();
+            }
+        };
     </script>
+
     <script>
         const audioObj = document.querySelector('audio');
         const audioSauce = document.querySelector('#audioSource');
@@ -176,7 +211,7 @@
         const lbs2 = "./loopoff.png";
 
         playButtons.forEach(button => {
-            button.onclick = function() {
+            button.onclick = function () {
                 if (audioObj.paused) {
                     audioObj.play();
                 } else {
@@ -186,29 +221,23 @@
         });
 
         audioObj.onplay = function () {
-            nowpl.textContent="♪ "+audioSauce.src.split("https://deltarune.com/assets/audio/")[1];
+            nowpl.textContent = "♪ " + audioSauce.src.split("https://deltarune.com/assets/audio/")[1];
             document.querySelector('.dog').style.display = "none";
             document.querySelector('.dog-playing').style.display = "block";
         };
 
         audioObj.onpause = function () {
-            nowpl.textContent="♪ "+audioSauce.src.split("https://deltarune.com/assets/audio/")[1]+" - Paused"
+            nowpl.textContent = "♪ " + audioSauce.src.split("https://deltarune.com/assets/audio/")[1] + " - Paused";
             document.querySelector('.dog').style.display = "block";
             document.querySelector('.dog-playing').style.display = "none";
         };
 
-        loopb.onclick = function(e) {
-            if (audioObj.loop) {
-                audioObj.loop = false;
-                loopb.src=lbs2;
-            }
-            else {
-                audioObj.loop = true;
-                loopb.src=lbs1;
-            }
-        }
-
+        loopb.onclick = function (e) {
+            audioObj.loop = !audioObj.loop;
+            loopb.src = audioObj.loop ? lbs1 : lbs2;
+        };
     </script>
+
     <script>
         const currentNewsletter = "Autumn 24";
         const spamton = "[[CLICK HERE]] for [[" + currentNewsletter + " Newsletter]]!!";

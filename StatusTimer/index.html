@@ -149,6 +149,7 @@
             <figcaption class="proof"></figcaption>
         </figure>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
     <script>
         let randomAudios = [
             "update2022-town-day.ogg",
@@ -299,8 +300,8 @@
         }
 
         function updateCountdown() {
-            const targetDate = new Date("September 15, 2024 00:00:00 GMT-0400").getTime();
-            const now = new Date().getTime();
+            const targetDate = luxon.DateTime.fromISO('2024-09-15T00:00:00', { zone: 'America/New_York' });
+            const now = luxon.DateTime.now();
             const distance = targetDate - now;
 
             if (distance >= 0) {

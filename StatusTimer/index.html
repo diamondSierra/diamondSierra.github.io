@@ -322,17 +322,32 @@
                 if (days == 1) {
                     document.getElementById("l_d").innerText="Day";
                 }
+                else {
+                    document.getElementById("l_d").innerText="Days";
+                }
                 if (hours == 0) {
                     document.getElementById("l_h").style.display="none";
                 }
                 if (hours == 1) {
                     document.getElementById("l_h").innerText="Hour";
                 }
+                else {
+                    document.getElementById("l_h").innerText="Hours";
+                }
                 if (minutes == 0) {
                     document.getElementById("1_m").style.display="none";
                 }
                 if (minutes == 1) {
                     document.getElementById("l_m").innerText="Minute";
+                }
+                else {
+                    document.getElementById("l_m").innerText="Minutes";
+                }
+                if (seconds == 1) {
+                    document.getElementById("l_s").innerText="Second";
+                }
+                else {
+                    document.getElementById("l_s").innerText="Seconds";
                 }
                 document.getElementById("days").innerText = days;
                 document.getElementById("hours").innerText = hours;

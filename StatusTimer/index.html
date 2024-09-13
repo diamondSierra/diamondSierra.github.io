@@ -114,19 +114,19 @@
         <div class="timer" id="countdown">
             <div class="time-section">
                 <span id="days">--</span>
-                <span class="label">Days</span>
+                <span class="label" id="l_d">Days</span>
             </div>
             <div class="time-section">
                 <span id="hours">--</span>
-                <span class="label">Hours</span>
+                <span class="label" id="l_h">Hours</span>
             </div>
             <div class="time-section">
                 <span id="minutes">--</span>
-                <span class="label">Minutes</span>
+                <span class="label" id="l_m">Minutes</span>
             </div>
             <div class="time-section">
                 <span id="seconds">--</span>
-                <span class="label">Seconds</span>
+                <span class="label" id="l_s">Seconds</span>
             </div>
         </div>
         <figure class="music-embed mb mt-big">
@@ -315,6 +315,25 @@
                         document.querySelector('title').innerText = emojiList[days] + titleString;
                     }
                 }
+                if (days == 0) {
+                    document.getElementById("days").style.display="none";
+                    document.getElementById("l_d").style.display="none";
+                }
+                if (days == 1) {
+                    document.getElementById("l_d").innerText="Day";
+                }
+                if (hours == 0) {
+                    document.getElementById("l_h").style.display="none";
+                }
+                if (hours == 1) {
+                    document.getElementById("l_h").innerText="Hour";
+                }
+                if (minutes == 0) {
+                    document.getElementById("1_m").style.display="none";
+                }
+                if (minutes == 1) {
+                    document.getElementById("l_m").innerText="Minute";
+                }
                 document.getElementById("days").innerText = days;
                 document.getElementById("hours").innerText = hours;
                 document.getElementById("minutes").innerText = minutes;
@@ -333,10 +352,10 @@
             updateCountdown();
             sIv = setInterval(updateCountdown, 1000);
         } else {
+            updateCountdown = function(){/**/};
             document.querySelector('#countdown').remove();
             document.querySelector('#rt').remove();
             document.querySelector('#newsletterTitle').innerText="no next newsletter date currently available.\ncheck again later";
-            updateCountdown = function(){/**/};
         }
     </script>
 </body>

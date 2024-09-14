@@ -142,12 +142,18 @@
                 <img class="random" src="./random.png">
                 <img class="shuffle" src="./shuffleoff.png">
             </div>
-            <span class="small">Note that in order to play next track in shuffle mode, you <span class="red">MUST</span> have loop turned off.&#10;Otherwise, it will loop the current track non-stop.</span>
             <figcaption>"Click me to play a random <span class="info" title="To avoid copyright issues, I will only provide free, publicly accessible sound files.&#10;Any song listed here is being played from the official DELTARUNE.com website.">DELTARUNE.com</span> song!"</figcaption>
         </figure>
         <figure class="proof">
             <figcaption class="proof"></figcaption>
         </figure>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-6">
+            <div class="disclaimer">
+                <p>Nintendo Switch is a trademark of Nintendo. "PlayStation" and the "PS" Family logo are registered trademarks and "PS4" is a trademark of Sony Interactive Entertainment LLC.</p>
+            </div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
     <script>
@@ -316,8 +322,8 @@
                     }
                 }
                 if (days == 0) {
-                    document.getElementById("days").style.display="none";
-                    document.getElementById("l_d").style.display="none";
+                    document.getElementById("days").style.color="#808080";
+                    document.getElementById("l_d").style.color="#808080";
                 }
                 if (days == 1) {
                     document.getElementById("l_d").innerText="Day";
@@ -326,7 +332,7 @@
                     document.getElementById("l_d").innerText="Days";
                 }
                 if (hours == 0) {
-                    document.getElementById("l_h").style.display="none";
+                    document.getElementById("l_h").style.color="#808080";
                 }
                 if (hours == 1) {
                     document.getElementById("l_h").innerText="Hour";
@@ -335,7 +341,7 @@
                     document.getElementById("l_h").innerText="Hours";
                 }
                 if (minutes == 0) {
-                    document.getElementById("1_m").style.display="none";
+                    document.getElementById("1_m").style.color="#808080";
                 }
                 if (minutes == 1) {
                     document.getElementById("l_m").innerText="Minute";

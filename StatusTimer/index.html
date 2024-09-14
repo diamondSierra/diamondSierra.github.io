@@ -9,6 +9,7 @@
     <style>
         @font-face { font-family: "8-Bit"; src: url('https://deltarune.com/assets/fonts/8bitOperatorPlus-Regular.ttf'); }
         @font-face { font-family: "8-Bit Bold"; src: url('https://deltarune.com/assets/fonts/8bitOperatorPlus-Bold.ttf'); }
+        @font-face { font-family: "Small Text"; src: url('./Small.ttf'); }
         body {
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -100,6 +101,18 @@
         .small {
             font-size: 12px !important;
         }
+        footer {
+        	position: fixed;
+		    bottom: 0;
+		    left: 0;
+		    width: 100%;
+		    text-align: center;
+		    padding: 10px 0;
+		    z-index: 10;
+        	color: #808080;
+        	font-family: "Small Text";
+        	font-size: 8px;
+        }
     </style>
 </head>
 <body>
@@ -148,13 +161,7 @@
             <figcaption class="proof"></figcaption>
         </figure>
     </div>
-    <div class="row">
-        <div class="col-sm-offset-3 col-sm-6">
-            <div class="disclaimer">
-                <p>Nintendo Switch is a trademark of Nintendo. "PlayStation" and the "PS" Family logo are registered trademarks and "PS4" is a trademark of Sony Interactive Entertainment LLC.</p>
-            </div>
-        </div>
-    </div>
+    <footer class="toby-copyright" style="bottom: 75px;">(C) TOBY FOX 2015-2024</footer>
     <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
     <script>
         let randomAudios = [
@@ -322,8 +329,8 @@
                     }
                 }
                 if (days == 0) {
-                    document.getElementById("days").style.color="#808080";
-                    document.getElementById("l_d").style.color="#808080";
+                    document.getElementById("days").style.display="none";
+                    document.getElementById("l_d").style.display="none";
                 }
                 if (days == 1) {
                     document.getElementById("l_d").innerText="Day";
@@ -366,9 +373,11 @@
 
         if (currentNewsletter.length >= 0) {
             if (currentNewsletter.match('Winter ')) {document.querySelector('#newsletterTitle').style.color="#fffafa"};
-            if (currentNewsletter.match('Autumn ')) {document.querySelector('#newsletterTitle').style.color="darkorange"};
+            if (currentNewsletter.match('Krismas ')) {document.querySelector('#newsletterTitle').style.color="#cc231e"};
             if (currentNewsletter.match('Spring ')) {document.querySelector('#newsletterTitle').style.color="#88A075"};
             if (currentNewsletter.match('Summer ')) {document.querySelector('#newsletterTitle').style.color="#15B2D3"};
+            if (currentNewsletter.match('Autumn ')) {document.querySelector('#newsletterTitle').style.color="darkorange"};
+            if (currentNewsletter.match('Halloween ')) {document.querySelector('#newsletterTitle').style.color="#FF7518"};
             
             updateCountdown();
             sIv = setInterval(updateCountdown, 1000);

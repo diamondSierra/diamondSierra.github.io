@@ -247,12 +247,12 @@
     </script>
 
     <script>
-        const currentNewsletter = "";
+        const currentNewsletter = "null-none";
         const spamton = "[[CLICK HERE]] for [[" + currentNewsletter + " Newsletter]]!!";
         const url = "";
-        const proofurl = ""
-        const titleString = "UNDERTALE / DELTARUNE NEWSLETTER: " + currentNewsletter + " - Toby Fox"
-        document.querySelector('title').innerText = "📆" + titleString ;
+        const proofurl = "";
+        const titleString = "UNDERTALE / DELTARUNE NEWSLETTER: " + currentNewsletter + " - Toby Fox";
+        document.querySelector('title').innerText = titleString;
         document.querySelector('#newsletterTitle').innerText = currentNewsletter;
 
         function goto() {
@@ -367,7 +367,7 @@
             }
         }
 
-        if (currentNewsletter.length >= 0) {
+        if (!currentNewsletter.match('null-none')) {
             if (currentNewsletter.match('Winter ')) {document.querySelector('#newsletterTitle').style.color="#fffafa"};
             if (currentNewsletter.match('Krismas ')) {document.querySelector('#newsletterTitle').style.color="#cc231e"};
             if (currentNewsletter.match('Spring ')) {document.querySelector('#newsletterTitle').style.color="#88A075"};

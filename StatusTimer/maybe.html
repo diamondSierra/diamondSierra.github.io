@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://toby.fangamer.com/favicon.ico" rel="icon" type="image/png">
+    <title>UNDERTALE / DELTARUNE NEWSLETTER - Toby Fox</title>
+    <link href="https://deltarune.com/assets/css/main.css?1668902517" rel="stylesheet" type="text/css">
+    <style>
+        @font-face { font-family: "8-Bit"; src: url('https://deltarune.com/assets/fonts/8bitOperatorPlus-Regular.ttf'); }
+        @font-face { font-family: "8-Bit Bold"; src: url('https://deltarune.com/assets/fonts/8bitOperatorPlus-Bold.ttf'); }
+        @font-face { font-family: "Small Text"; src: url('./Small.ttf'); }
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            cursor: url('./curs.png') 0 1, pointer;
+        }
+        span:not(.info), footer, figcaption {
+            cursor: url('./curs_w.png') 0 1, auto !important;
+        }
+        img {
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+        .container {
+            text-align: center;
+        }
+        .title {
+            font-family: "8-Bit";
+            font-size: 45px;
+            margin-bottom: -20px;
+        }
+        .timer {
+            font-family: "8-Bit Bold";
+            font-size: 80px;
+            display: flex;
+            justify-content: center;
+        }
+        .time-section {
+            margin: 0 10px;
+        }
+        .time-section span {
+            display: block;
+            text-align: center;
+        }
+        .label {
+            font-size: 20px;
+        }
+        .tobysleeping {
+            -webkit-user-drag: none;
+            -moz-user-drag: none;
+            -ms-user-drag: none;
+            user-select: none;
+            pointer-events: none;
+            display: block;
+            width: 120px;
+            height: 50px;
+            margin: auto;
+            margin-bottom: -20px;
+        }
+        .figstyle, figcaption {
+            font-family: "8-Bit Bold";
+        }
+        .proof {
+            color: white !important;
+            font-family: "8-Bit Bold" !important;
+            visibility: hidden;
+        }
+        #proofclick {
+            color: #ffaec9 !important;
+            font-family: "8-Bit Bold" !important;
+            visibility: hidden;
+        }
+        .loopbutton {
+            width:30px;
+            height:30px;
+        }
+        .random {
+            width: 50px;
+            height: 30px;
+            margin-left: 10px!important;
+        }
+        .shuffle {
+            width: 60px;
+            height: 30px;
+            margin-left: 10px!important;
+        }
+        .info {
+            cursor: help !important;
+            color: #75fbed;
+        }
+        .small {
+            font-size: 12px !important;
+        }
+        footer {
+	    z-index: 10;
+            color: #808080;
+            font-family: "Small Text";
+            font-size: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <img class="tobysleeping" src="https://deltarune.com/assets/images/dog-sleep.gif">
+            <span id="newsletterTitle"></span>
+        </div>
+        <div class="title" id="rt">
+            Remaining Time:
+        </div>
+        <div class="timer" id="countdown">
+            <div class="time-section" id="sec-d">
+                <span id="days">--</span>
+                <span class="label" id="l_d">Days</span>
+            </div>
+            <div class="time-section" id="sec-h">
+                <span id="hours">--</span>
+                <span class="label" id="l_h">Hours</span>
+            </div>
+            <div class="time-section" id="sec-m">
+                <span id="minutes">--</span>
+                <span class="label" id="l_m">Minutes</span>
+            </div>
+            <div class="time-section" id="sec-s">
+                <span id="seconds">--</span>
+                <span class="label" id="l_s">Seconds</span>
+            </div>
+        </div>
+        <figure class="music-embed mb mt-big">
+            <figcaption class="figtitle" id="nowpl">♪ None</figcaption>
+            <div aria-hidden="" class="dog-player">
+                <img class="dog" draggable="false" id="play" src="https://deltarune.com/assets/images/dog-piano.png">
+                <img class="dog-playing" draggable="false" style="display:none" id="play" src="https://deltarune.com/assets/images/dog-piano-playing.gif">
+                <audio class="music" volume="0.7" id="musicPlayer">
+                    <source id="audioSource" src="https://deltarune.com/assets/audio/" type="audio/mp3">
+                    <p>Your browser does not support music playback. Please <a href="https://deltarune.com/assets/audio/">download the file</a> to listen.</p>
+                </audio>
+                <img class="loopbutton" draggable="false" src="./loopoff.png">
+                <img class="random" draggable="false" src="./random.png">
+                <img class="shuffle" draggable="false" src="./shuffleoff.png">
+            </div>
+            <figcaption>"Click me to play a random <span class="info" title="To avoid copyright issues, I will only provide free, publicly accessible sound files.&#10;Any song listed here is being played from the official DELTARUNE.com website.">DELTARUNE.com</span> song!"</figcaption>
+        </figure>
+        <figure class="proof">
+            <figcaption class="proof"></figcaption>
+        </figure>
+	<footer class="toby-copyright">(C) TOBY FOX 2015-2024	ALL CREDIT GOES TO TOBY FOX</footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+    <script>
+        let randomAudios = [
+            "update2022-town-day.ogg",
+            "update2022-castle-funk.ogg",
+            "greenroom.ogg",
+            "keygen_credits.ogg",
+            "midi-cybers-world_byShinkoNetCavy.mp3",
+            "midi-pandora-palace_byShinkoNetCavy.mp3",
+            "midi-spamton-battle.mp3",
+            "midi-bigshot_byShinkoNetCavy.mp3"
+        ];
+
+        let random = document.querySelector('.random');
+        let shuffle = document.querySelector('.shuffle');
+        let audioSrc = document.getElementById('audioSource');
+        let musicPlayer = document.getElementById('musicPlayer');
+
+        function loadRandomAudio() {
+            audioSrc.src = "https://deltarune.com/assets/audio/" + randomAudios[Math.floor(Math.random() * randomAudios.length)];
+            musicPlayer.load();
+        }
+
+        loadRandomAudio();
+
+        let isShuffle = false;
+
+        random.onclick = function (e) {
+            if (isShuffle) {
+                isShuffle = false;
+                shuffle.src = "./shuffleoff.png";
+            }
+            musicPlayer.pause();
+            musicPlayer.currentTime = 0;
+            document.querySelector('.dog').style.display = "block";
+            document.querySelector('.dog-playing').style.display = "none";
+            document.querySelector('#nowpl').textContent = "♪ None";
+            loadRandomAudio();
+        };
+
+        shuffle.onclick = function (e) {
+            isShuffle = !isShuffle;
+            shuffle.src = isShuffle ? "./shuffleon.png" : "./shuffleoff.png";
+        };
+
+        musicPlayer.onended = function () {
+            if (isShuffle) {
+                loadRandomAudio();
+                musicPlayer.play();
+            }
+        };
+    </script>
+
+    <script>
+        const audioObj = document.querySelector('audio');
+        const audioSauce = document.querySelector('#audioSource');
+        const playButtons = document.querySelectorAll('#play');
+        const loopb = document.querySelector('.loopbutton');
+        const nowpl = document.querySelector('#nowpl');
+        const lbs1 = "./loopon.png";
+        const lbs2 = "./loopoff.png";
+
+        playButtons.forEach(button => {
+            button.onclick = function () {
+                if (audioObj.paused) {
+                    audioObj.play();
+                } else {
+                    audioObj.pause();
+                }
+            };
+        });
+
+        audioObj.onplay = function () {
+            nowpl.textContent = "♪ " + audioSauce.src.split("https://deltarune.com/assets/audio/")[1];
+            document.querySelector('.dog').style.display = "none";
+            document.querySelector('.dog-playing').style.display = "block";
+        };
+
+        audioObj.onpause = function () {
+            nowpl.textContent = "♪ " + audioSauce.src.split("https://deltarune.com/assets/audio/")[1] + " - Paused";
+            document.querySelector('.dog').style.display = "block";
+            document.querySelector('.dog-playing').style.display = "none";
+        };
+
+        loopb.onclick = function (e) {
+            audioObj.loop = !audioObj.loop;
+            loopb.src = audioObj.loop ? lbs1 : lbs2;
+        };
+    </script>
+
+    <script>
+        const currentNewsletter = "Halloween 24";
+        const spamton = "[[CLICK HERE]] for [[" + currentNewsletter + " Newsletter]]!!";
+        const url = "https://toby.fangamer.com/newsletters/halloween24/";
+        const proofurl = "";
+        const titleString = "UNDERTALE / DELTARUNE NEWSLETTER: " + currentNewsletter + " - Toby Fox";
+        document.querySelector('title').innerText = titleString;
+        document.querySelector('#newsletterTitle').innerText = currentNewsletter;
+
+        function goto() {
+            window.location.href = url;
+        }
+
+        if (proofurl.length > 3) {
+            const proofObj=document.querySelector('.proof');
+            proofObj.innerHTML = 'Proof of date <span id="proofclick">[[CLICK HERE]]!!</span>';
+            const proofCB = document.querySelector('#proofclick');
+            proofObj.style.visibility="visible";
+            proofCB.style.visibility="visible";
+            proofCB.onclick = function(e) {
+                window.location.href=proofurl;
+            }
+        }
+
+        const emojiList = {
+            0: "⌛",
+            1: "1️⃣",
+            2: "2️⃣",
+            3: "3️⃣",
+            4: "4️⃣",
+            5: "5️⃣",
+            6: "6️⃣",
+            7: "7️⃣",
+            8: "8️⃣",
+            9: "9️⃣",
+            10: "🔟",
+        };
+        
+        let sIv;
+
+        function fetcher() {
+            fetch(url)
+                .then(response => {
+                    if (response.status === 200) {
+                        document.getElementById("countdown").innerHTML = 
+                            "<span class='title' onclick='goto()' style='color: rgba(253,224,71);'>" + spamton + "</span>";
+                        document.querySelector('title').innerText = "‼️" + titleString;
+                        clearInterval(sIv);
+                    } else {
+                        document.getElementById("countdown").innerHTML = 
+                            "<span class='title'>waiting for Toby Fox...</span>";
+                    }
+                })
+                .catch(error => {
+                    document.getElementById("countdown").innerHTML = 
+                        "<span class='title'>waiting for Toby Fox...</span>";
+                    console.error("error fetching URL:", error);
+                });
+        }
+
+        function updateCountdown() {
+            const targetDate = luxon.DateTime.fromISO('2024-09-14T20:00:00', { zone: 'America/New_York' });
+            const now = luxon.DateTime.now();
+            const distance = targetDate - now;
+
+            if (distance >= 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                if (days <= 5) {
+                    if (!document.querySelector('title').innerText.match("‼️")) {
+                        document.querySelector('title').innerText = emojiList[days] + titleString;
+                    }
+                }
+                if (days == 0) {
+                    document.getElementById("sec-d").style.display="none";
+                }
+                if (days == 1) {
+                    document.getElementById("l_d").innerText="Day";
+                }
+                else {
+                    document.getElementById("l_d").innerText="Days";
+                }
+                if (hours == 0) {
+                    document.getElementById("sec-h").style.display="none";
+                }
+                if (hours == 1) {
+                    document.getElementById("l_h").innerText="Hour";
+                }
+                else {
+                    document.getElementById("l_h").innerText="Hours";
+                }
+                if (minutes == 0 && hours == 0) {
+                    document.getElementById("1_m").style.color="#808080";
+                }
+                if (minutes == 1) {
+                    document.getElementById("l_m").innerText="Minute";
+                }
+                else {
+                    document.getElementById("l_m").innerText="Minutes";
+                }
+		if (seconds == 0 && minutes == 0 && hours == 0) {
+                    document.getElementById("1_m").style.color="#808080";
+                }
+                if (seconds == 1) {
+                    document.getElementById("l_s").innerText="Second";
+                }
+                else {
+                    document.getElementById("l_s").innerText="Seconds";
+                }
+                document.getElementById("days").innerText = days;
+                document.getElementById("hours").innerText = hours;
+                document.getElementById("minutes").innerText = minutes;
+                document.getElementById("seconds").innerText = seconds;
+            } else {
+                fetcher();
+            }
+        }
+
+        if (!currentNewsletter.match('null-none')) {
+            if (currentNewsletter.match('Winter ')) {document.querySelector('#newsletterTitle').style.color="#fffafa"};
+            if (currentNewsletter.match('Krismas ')) {document.querySelector('#newsletterTitle').style.color="#cc231e"};
+            if (currentNewsletter.match('Spring ')) {document.querySelector('#newsletterTitle').style.color="#88A075"};
+            if (currentNewsletter.match('Summer ')) {document.querySelector('#newsletterTitle').style.color="#15B2D3"};
+            if (currentNewsletter.match('Autumn ')) {document.querySelector('#newsletterTitle').style.color="darkorange"};
+            if (currentNewsletter.match('Halloween ')) {document.querySelector('#newsletterTitle').style.color="#FF7518"};
+            
+            updateCountdown();
+            sIv = setInterval(updateCountdown, 1000);
+        } else {
+            clearInterval(sIv);
+            document.querySelector('#countdown').remove();
+            document.querySelector('#rt').remove();
+            document.querySelector('#newsletterTitle').innerText="no next newsletter date currently available.\ncheck again later";
+	    document.title = "🔮" + titleString;
+        }
+    </script>
+</body>
+</html>

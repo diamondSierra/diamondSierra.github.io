@@ -252,7 +252,7 @@
         const url = "https://toby.fangamer.com/newsletters/halloween24/";
         const proofurl = "";
         const titleString = "UNDERTALE / DELTARUNE NEWSLETTER: " + currentNewsletter + " - Toby Fox";
-        document.querySelector('title').innerText = titleString;
+        document.querySelector('title').innerText = "🎃" + titleString;
         document.querySelector('#newsletterTitle').innerText = currentNewsletter;
 
         function goto() {
@@ -307,7 +307,7 @@
         }
 
         function updateCountdown() {
-            const targetDate = luxon.DateTime.fromISO('2024-09-14T20:00:00', { zone: 'America/New_York' });
+            const targetDate = luxon.DateTime.fromISO('2024-10-31T00:00:00', { zone: 'America/New_York' });
             const now = luxon.DateTime.now();
             const distance = targetDate - now;
 

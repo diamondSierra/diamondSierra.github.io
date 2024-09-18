@@ -378,10 +378,11 @@
             updateCountdown();
             sIv = setInterval(updateCountdown, 1000);
         } else {
-            updateCountdown = function(){/**/};
+            clearInterval(sIv);
             document.querySelector('#countdown').remove();
             document.querySelector('#rt').remove();
             document.querySelector('#newsletterTitle').innerText="no next newsletter date currently available.\ncheck again later";
+	    document.title = "🔮" + titleString;
         }
     </script>
 </body>

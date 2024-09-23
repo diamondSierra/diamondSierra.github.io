@@ -1,17 +1,17 @@
 [
     {
-        "title": "Test Game One",
-        "thumbnail": "game1.jpg",
-        "description": "This is Game One."
+        "title": "Undertale",
+        "thumbnail": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/391540/library_600x900_2x.jpg?t=1579095961",
+        "description": "2015 - Toby Fox - RPG Indie Game"
     },
     {
-        "title": "Test Game Two",
-        "thumbnail": "game2.jpg",
-        "description": "This is Game Two."
+        "title": "Five Nights at Freddy's 1",
+        "thumbnail": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/319510/capsule_616x353.jpg?t=1421526587",
+        "description": "2014 - Scott Cawthon - Indie Horror Game"
     },
     {
-        "title": "Test Game Three",
-        "thumbnail": "game3.jpg",
-        "description": "This is Game Three."
+        "title": "Grand Theft Auto: V",
+        "thumbnail": "https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/271590/hero_capsule.jpg?t=1671484916",
+        "description": "2013 - Rockstar Games - Open-World Action Shooter"
     }
 ]

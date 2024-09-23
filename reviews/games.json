@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Test Game One",
+        "thumbnail": "game1.jpg",
+        "description": "This is Game One."
+    },
+    {
+        "title": "Test Game Two",
+        "thumbnail": "game2.jpg",
+        "description": "This is Game Two."
+    },
+    {
+        "title": "Test Game Three",
+        "thumbnail": "game3.jpg",
+        "description": "This is Game Three."
+    }
+]

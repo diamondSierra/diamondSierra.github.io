@@ -13,6 +13,45 @@
         <input type="file" id="fileInput" accept=".obj">
         <canvas id="webglCanvas"></canvas>
     </div>
-    <script src="app.js" type="module"></script>
+    <script type="module">
+		import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.module.js';
+		import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/jsm/controls/OrbitControls.js';
+
+		const scene = new THREE.Scene();
+		const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+		const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('webglCanvas'), antialias: true })
+		renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.6);
+		renderer.setClearColor(0x282828);
+		const light = new THREE.AmbientLight(0xffffff, 1);
+		scene.add(light);
+
+		const controls = new THREE.OrbitControls(camera, renderer.domElement);
+		document.getElementById('fileInput').addEventListener('change', (event) => {
+			const file = event.target.files[0];
+			const reader = new FileReader();
+			
+			reader.onload = function(e) {
+				const objLoader = new THREE.OBJLoader();
+				const obj = objLoader.parse(e.target.result);
+				scene.add(obj);
+			};
+			
+			reader.readAsText(file);
+		});
+
+		camera.position.z = 5;
+		function animate() {
+			requestAnimationFrame(animate);
+			controls.update();
+			renderer.render(scene, camera);
+		}
+		animate();
+
+		window.addEventListener('resize', () => {
+			renderer.setSize(window.innerWidth * 0.8, window.innerHeight * 0.6);
+			camera.aspect = window.innerWidth / window.innerHeight;
+			camera.updateProjectionMatrix();
+		});
+	</script>
 </body>
 </html>

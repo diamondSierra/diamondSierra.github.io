@@ -1,0 +1,12 @@
+{
+    "games": [
+        { "n": "Half-Life", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/70/d991f95d96e1c76d2acb944bb09447628cd96caa.ico" },
+        { "n": "Half-Life 2", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/220/85c721efacb1b0903fa11e993291c33da8f643d1.ico" },
+        { "n": "Counter-Strike Source", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/240/554f4efec40d7f0fef58961d9a3c1da16fe38984.ico" },
+        { "n": "Counter-Strike Condition Zero", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/80/cd0ee6cb22904e712f408576a4fe9e74e045e098.ico" },
+        { "n": "Portal", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/400/c7cb09b9f0fbb9589b4bd5a8217c8333c4d8204e.ico" },
+        { "n": "Portal 2", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/620/25a5a16b2423bf7487ac5340b5b0948cef48c5f8.ico" },
+        { "n": "Team Fortress", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/20/41ce1f773bfdc9f013a2694d7cacb18a41316fab.ico" },
+        { "n": "Team Fortress 2", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/440/033bdd91842b6aca0633ee1e5f3e6b82f2e8962f.ico" }
+    ]
+}

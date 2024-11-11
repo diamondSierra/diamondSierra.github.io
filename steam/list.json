@@ -1,11 +1,11 @@
 {
     "games": [
-	    { "n": "Alien Swarm", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/630/67126b5081b423af53f5e88e8e81d91b15daa644.jpg" },
-	    { "n": "Counter-Strike", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/10/f16b5951eed02e3c3516389031374e95268d9ce7.ico" },
+	{ "n": "Alien Swarm", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/630/67126b5081b423af53f5e88e8e81d91b15daa644.jpg" },
+	{ "n": "Counter-Strike", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/10/f16b5951eed02e3c3516389031374e95268d9ce7.ico" },
         { "n": "Counter-Strike Source", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/240/554f4efec40d7f0fef58961d9a3c1da16fe38984.ico" },
         { "n": "Counter-Strike Condition Zero", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/80/cd0ee6cb22904e712f408576a4fe9e74e045e098.ico" },
-	    { "n": "Counter-Strike 2", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/730/324b323045b09bace182f928f4104dfcd93cb7f3.ico" },
-	    { "n": "Day of Defeat: Source"; "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/300/8d7526d3efee56ac45b70fb4a73c749bf5824e56.ico" },
+	{ "n": "Counter-Strike 2", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/730/324b323045b09bace182f928f4104dfcd93cb7f3.ico" },
+	{ "n": "Day of Defeat: Source"; "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/300/8d7526d3efee56ac45b70fb4a73c749bf5824e56.ico" },
     	{ "n": "Deathmatch Classic", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/40/24506106e2d545c7b8eedb0eae13e543e7dead1e.ico" },
     	{ "n": "Dota 2", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/570/0bbb630d63262dd66d2fdd0f7d37e8661a410075.jpg" },
     	{ "n": "Half-Life", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/70/d991f95d96e1c76d2acb944bb09447628cd96caa.ico" },

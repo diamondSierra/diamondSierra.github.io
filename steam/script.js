@@ -19,7 +19,6 @@ async function loadGames() {
     document.querySelectorAll(".game").forEach((g) => {
         g.title = g.textContent;
         g.addEventListener("click", function() {
-            audio.stop();
             audio.play();
         });
     });

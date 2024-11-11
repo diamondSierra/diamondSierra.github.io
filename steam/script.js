@@ -5,9 +5,9 @@ async function loadGames() {
     const audio = new Audio("click.wav");
 
     function short(url) {
-        const regex = /images\/apps\/\d+\/([a-f0-9]{40})\.ico/;
+        const regex = /apps\/(\d+)\//;
         const match = url.match(regex);
-        return match ? url.split('/')[4] : null;
+        return match ? match[1] : null;
     }
 
     data.games.forEach(game => {

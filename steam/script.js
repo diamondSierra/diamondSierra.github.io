@@ -15,6 +15,13 @@ async function loadGames() {
         gamesList.appendChild(gameDiv);
     });
 
-    document.querySelectorAll(".game").forEach((g) => g.title=g.textContent)
+    const audio = new Audio("click.wav");
+    document.querySelectorAll(".game").forEach((g) => {
+        g.title = g.textContent;
+        g.addEventListener("click", function() {
+            audio.stop();
+            audio.play();
+        });
+    });
 }
 document.addEventListener("DOMContentLoaded", loadGames);

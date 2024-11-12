@@ -6,6 +6,7 @@
 
 body {
     background-color: #2e2e2e;
+    background-image: url("bg.png");
     display: flex;
     justify-content: center;
     align-items: center;

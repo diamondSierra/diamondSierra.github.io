@@ -30,6 +30,11 @@ async function loadGames() {
                 window.open(`https://store.steampowered.com/app/${appId}`, "_blank");
             }
         });
+        gameDiv.addEventListener("contextmenu", function() {
+            if (appId) {
+                window.open(`https://steamdb.info/app/${appId}/info`, "_blank");
+            }
+        });
     });
 }
 document.addEventListener("DOMContentLoaded", loadGames);

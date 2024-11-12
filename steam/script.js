@@ -31,6 +31,7 @@ async function loadGames() {
             }
         });
         gameDiv.addEventListener("contextmenu", function() {
+            const appId = short(game.i);
             if (appId) {
                 window.open(`https://steamdb.info/app/${appId}/info`, "_blank");
             }

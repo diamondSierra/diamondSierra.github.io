@@ -2,7 +2,7 @@
     "games": [
 	{ "n": "Alien Swarm", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/630/67126b5081b423af53f5e88e8e81d91b15daa644.jpg" },
 	{ "n": "Call of Duty: Black Ops", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/42700/ea744d59efded3feaeebcafed224be9eadde90ac.jpg" },
-	{ "n": "Call of Duty: Black Ops II", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/202970/0a23d78ade8c8d7b4cfa15bf71c9dd535b2998ca.jpg" }
+	{ "n": "Call of Duty: Black Ops II", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/202970/0a23d78ade8c8d7b4cfa15bf71c9dd535b2998ca.jpg" },
 	{ "n": "Counter-Strike", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/10/f16b5951eed02e3c3516389031374e95268d9ce7.ico" },
         { "n": "Counter-Strike Source", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/240/554f4efec40d7f0fef58961d9a3c1da16fe38984.ico" },
         { "n": "Counter-Strike Condition Zero", "i": "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/apps/80/cd0ee6cb22904e712f408576a4fe9e74e045e098.ico" },

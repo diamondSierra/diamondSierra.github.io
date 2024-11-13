@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>css-red-x-y-z {color:#ee0000; background-color: #ffbbbb;}</style>
+</head>
+<p>Button below will try to <b>GET</b> <code>https://google.com</code>. <br>&nbsp;Will fail as Google blocks third-party requests via <i>CORS-policy.</i></p>
+<button onclick="grab_normal()">CORS</button>
+<p>Button below will open a new browser tab pretending that you opened it on its own, and then retrieve the tab's document data. This will successfully bypass the policy.</p>
+<button onclick="fuck_normal()">Window API</button>
+<p> result goes below (will fill rest of document with result in plaintext.</p>
+<a id="res"></a>
+<script type="module">
+    async function grab_normal() {
+        try {
+            const res_n = await fetch("https://google.com")
+            document.querySelector("#res").textContent = toString(res_n.body)
+        }
+        catch (error) {
+            document.querySelector("#res").innerHTML = "<css-red-x-y-z>" + error.message + "</css-red-x-y-z>"
+        }
+    }
+    async function fuck_normal () {
+        try {
+            const tab_content = window.open("https://google.com/", "_blank")
+            await setTimeout(function(){}, 500)
+            document.querySelector("#res").textContent = toString(tab_content.body)
+        }
+        catch (error) {
+            document.querySelector("#res").innerHTML = "<css-red-x-y-z>" + error.message + "</css-red-x-y-z>"
+        }
+    }
+</script>
+</html>

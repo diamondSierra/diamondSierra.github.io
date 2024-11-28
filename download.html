@@ -1,0 +1,99 @@
+<!-- Copyright SAMSUNG © 2018. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta id="partitiontype" name="AP">
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background: rgba(1,179,189,255);
+            color: white;
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .top-left {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            text-align: left;
+        }
+        .l {
+            color: white;
+            font-weight: bold;
+            font-size: 12.5px;
+            margin: -10px 0;
+            padding: 5px 10px;
+        }
+        .r {
+            color: red;
+        }
+        .b {
+            color: blue;
+        }
+        #d {
+            margin: 20px 0;
+            width: 150px;
+            height: 150px;
+        }
+        #tt {
+            color: #dbe5ef;
+            font-size: 32px;
+            margin: 5px 0;
+        }
+        #bt {
+            color: rgba(50,221,233,255);
+            font-size: 25.5px;
+            margin: -5px 0 20px 0;
+        }
+        .progress-container {
+            width: 12%;
+            height: 10px;
+            background-color: #4cc6d2;
+            margin: 20px 0 10px 0;
+            position: relative;
+        }
+        .progress-bar {
+            width: 98.5%;
+            height: 100%;
+            background-color: #ccc;
+        }
+        .cancel-message {
+            font-size: 18px;
+            color: #dbe5ef;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top-left information -->
+    <div class="top-left">
+        <p class="l r">ODIN MODE</p>
+        <p class="l r">DOWNLOAD SPEED: FAST</p>
+        <p class="l">PRODUCT NAME: SM-A202F</p>
+        <p class="l">CURRENT BINARY: Samsung Official</p>
+        <p class="l">KG STATE: Checking</p>
+        <p class="l">FRP LOCK: OFF</p>
+        <p class="l">OEM LOCK: OFF (U)</p>
+        <p class="l b">Secure Download: Enabled</p>
+    </div>
+    
+    <!-- Centered content -->
+    <img id="d" src="save-arrow.png" alt="DOWNLOAD_ICON_UI">
+    <p id="tt">Downloading...</p>
+    <p id="bt">Do not turn off target</p>
+    
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-bar"></div>
+    </div>
+    
+    <!-- Cancel message -->
+    <p class="cancel-message">Volume Down Key + Power Key for more than 7 secs<br>: Cancel (restart phone)</p>
+</body>
+</html>
